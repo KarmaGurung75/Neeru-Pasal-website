@@ -1,0 +1,11 @@
+*{
+    background-color: white;
+}
+span.help-block{
+    color: red
+}
+
+p.help-block, .myForm ul li{font-size:12px;}
+
+.myForm label.control-label, .myForm div{width:100%;}
+
