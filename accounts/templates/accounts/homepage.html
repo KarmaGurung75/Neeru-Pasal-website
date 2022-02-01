@@ -1,0 +1,370 @@
+{% extends 'layout.html' %}
+{% load static%}
+{% block title %}
+<title>Homepage</title>
+{% endblock title %}
+{% block main_content %}
+<!--=============================Homepage Slider Image Section ======================================-->
+<style>
+    .carousel-item img{
+        filter: brightness(70%);
+    }
+    .carousel-caption{
+        top: 50%;
+        transform: translateY(-50%);
+        bottom: initial;
+    }
+    .item{
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+    .custom_image{
+        max-height:100vh;
+        overflow: hidden;
+    }
+    .custom_image::before{
+        background: #000;
+        opacity: 0.9;
+    }
+    .about{
+        background: url(../static/images/background/mainpage/about_home2.png ) no-repeat center;
+    }
+    .gallery{
+        background: url(../static/images/background/mainpage/gallery_bg.jpg) no-repeat center;
+        padding: 80px 0px;
+    }
+    img{
+        max-width: 100%;
+    }
+    .gallery img{
+        background: #fff;
+        padding: 15px;
+        width: 100%;
+        box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+        cursor: pointer;
+    }
+    .gallery h1{
+        font-family: 'Poppins';
+        color: white;
+    }
+    .product {
+        font-family: 'Poppins';
+        background: url(../static/images/background/mainpage/product_bg.jpg) no-repeat center;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+    }
+
+    .testimonial-section{
+        font-family: 'Poppins', cursive;
+        background: #FFFDD0;
+    }
+    .testi-img .img-box{
+        max-width: 360px;
+        margin:auto;
+        text-align: center;
+        position: relative;
+    }
+    .testi-img .circle{
+        height: 360px;
+        width: 360px;
+        background-color: #fb9c9a;
+        position: absolute;
+        border-radius: 50%;
+        left: 0;
+        bottom: 0;
+        transition: all 0.5s ease;
+    }
+    .testi-img .img-box-inner{
+        position: relative;
+        border-radius: 0 0 180px 180px;
+        overflow:hidden;
+    }
+    .testi-img .img-box-inner img{
+        max-width: 310px;
+    }
+    .testimonial-section .carousel-inner{
+        margin-bottom: 20px;
+    }
+    .testimonial-section .carousel-control-prev{
+        margin-right: 10px;
+    }
+    .testimonial-section .carousel-control-next,
+    .testimonial-section .carousel-control-prev{
+        position: relative;
+        height: 35px;
+        width: 35px;
+        background-color: #fb9c9a;
+        display: inline-flex;
+        border-radius: 50%;
+    }
+    .testimonial-section .carousel-control-prev img,
+    .testimonial-section .carousel-control-next img{
+        width: 15px;
+    }
+    .testi-item h3,
+    .testi-item p{
+        font-size: 18px;
+    }
+    .testi-item h3{
+        text-transform: capitalize;
+    }
+
+    @media(max-width:991px){
+        .testi-img .img-box{
+            max-width: 300px;
+        }
+        .testi-img .circle{
+            height: 300px;
+            width: 300px;
+        }
+        .testi-img .img-box-inner{
+            border-radius: 0 0 150px 150px;
+        }
+        .testi-img .img-box-inner img{
+            max-width: 230px;
+        }
+    }
+    @media(max-width:767px){
+        .testi-img{
+            margin-bottom: 25px;
+        }
+    }
+
+
+
+
+</style>
+<header class="container-fluid p-0">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" style="font-family: 'Poppins',sans-serif;">
+            <div class="carousel-item active">
+                <img src="{% static 'images/background/slider/home.jpg' %}" class="img-fluid w-100 custom_image" alt="..."
+                     style="">
+                <div class="carousel-caption d-flex justify-content-center">
+                    <div class="caption-content pe-5">
+                        <h5 class="text-warning display-1" data-aos="zoom-in" data-aos-duration="2000">Welcome To
+                            Neeru Pasal</h5>
+                        <p class="text-white lead" data-aos="zoom-in" data-aos-duration="2000">"Surrounded by mountains and situated on the banks of the Kali Gandaki,
+                            Neru pasal is an ideal place to buy local products <br> especially apple and apricot brandy.
+                            Perfect gifts for your beloved one from Mustang, well-known for Apples and its scenario."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/background/slider/main.jpg' %}" class="img-fluid w-100 custom_image" alt="...">
+                <div class="carousel-caption d-flex justify-content-center">
+                    <div class="caption-content pe-5">
+                        <h5 class="text-warning display-1">Main Local Product</h5>
+                        <p class="text-white lead">"Distilled, colorless, but potent alcohol derived from the fermented apples of Mustang, Which has gained popularity for its freshness and super quality.
+                            This brandy costs between Rs.125 to Rs.450 per bottle. Markhak is among the more recognizable brands,
+                            distinguished by its red and yellow label, red cap, and frosted glass bottle,<br>
+                            which imported from India."</p>
+                    </div>
+                    <div class="slider-btn d-flex flex-column  justify-content-center">
+                        <a href="/homepages/list"
+                           class="btn btn-2 btn-outline-warning border border-warning border-4 rounded-pill text-white fs-5">
+                            Visit Product
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/background/slider/contact.jpg' %}" class="img-fluid w-100 custom_image" alt="...">
+                <div class="carousel-caption d-flex justify-content-center">
+                    <div class="caption-content pe-5">
+                        <h5 class="text-warning display-1">Contact Us</h5>
+                        <p class="text-white lead">If You Have Any Queries Regarding The Food Or Any Other Problems You
+                            Can Simply Contact Us.</p>
+                    </div>
+                    <div class="slider-btn d-flex flex-column justify-content-center">
+                        <a href="/homepages/contact"
+                           class="btn btn-2 btn-outline-warning border border-warning border-4 rounded-pill text-white fs-5">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</header>
+
+<!--============================= About Section ======================================-->
+<section class="about container-fluid p-5 border border-white border-3">
+    <div class="section-content p-5 col-md-6 text-white" style="font-family: 'Poppins',sans-serif; ">
+        <h1 class="text-center pb-3 text-decoration-underline text-dark" data-aos="fade-up" data-aos-duration="2000">
+            Welcome To Neeru Passal</h1>
+        <p class="lh-lg text-dark" data-aos="fade-up" data-aos-duration="2000" style="font-size: 22px;" >
+            Neru Pasal is the local shop in Jomsom mustang, run by a mother-daughter team,
+            which is one of many places to love visiting and doing local product shopping in mustang.
+            It is known for selling local products like Apple jam, buckwheat flour, beans, dry fruits, etc.
+            Those chocolates and candies on the counter attract more kids and sweet lovers.
+          </p>
+        <a class="btn btn-2 btn-warning rounded-pill text-white fs-5 mt-3" data-aos="fade-up" data-aos-duration="2000"
+           href="/homepages/about_us">
+            Learn More
+        </a>
+    </div>
+</section>
+<!--============================= Product Section ======================================-->
+<section class="product container-fluid p-5">
+    <div class="row justify-content-center">
+        <h1 class="text-center text-white pb-2">Our Products</h1>
+        <div class="card p-2 m-2" style="width: 18rem; background:#FFFDD0;" data-aos="fade-up" data-aos-duration="2000">
+            <img src="{% static 'images/product/apples.jpg' %}" class="card-img-top img-fluid" data-aos="fade-down"
+                 data-aos-duration="2000" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" data-aos="fade-up" data-aos-duration="2000">Buckwheat flour</h5>
+                <p class="card-text" data-aos="fade-down" data-aos-duration="2000">
+                    Buckwheat flour, locally known as fapar ko pitho, is gluten-free packed with nutrition, amino acids,
+                    vitamins, minerals, and antioxidants. As a result, buckwheat consumption is linked to several health benefits,
+                    including improved blood sugar control and heart health.
+                    Buckwheat dido and pancakes are the famous food among the locals.
+                </p>
+            </div>
+        </div>
+        <div class="card p-2 m-2" style="width: 18rem; background:#FFFDD0;" data-aos="fade-up"
+             data-aos-duration="2000">
+            <img src="{% static 'images/product/marpha.jpg' %}" class="card-img-top img-fluid" data-aos="fade-down"
+                 data-aos-duration="2000" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" data-aos="fade-up" data-aos-duration="2000">Chhurpi (yak cheese)</h5>
+                <p class="card-text" data-aos="fade-down" data-aos-duration="2000">
+                    Chhurpi is a protein-rich cheese with a smoky flavor, soft and hard consistency,
+                    made from chhauri( female yak), which gradually becomes chewier the longer you gnaw at it.
+                    It's a favorite snack among the locals. There are two varieties of chhurpi, a soft variety
+                    usually consumed as a side dish with rice and butter tea, whereas a hard one chewed like betel.
+                </p>
+            </div>
+        </div>
+        <div class="card p-2 m-2" style="width: 18rem; background:#FFFDD0;" data-aos="fade-down"
+             data-aos-duration="2000">
+            <img src="{% static 'images/product/peach.jpg' %}" class="card-img-top img-fluid"
+                 data-aos="fade-up" data-aos-duration="2000" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" data-aos="fade-down" data-aos-duration="2000">Peach (Apricots) </h5>
+                <p class="card-text" data-aos="fade-up" data-aos-duration="2000">
+                    Locally known as Khurpani, these yellow-orange fruits rich in vitamins and minerals may be small.
+                    Still, they are incredibly nutritious and have many health benefits, such as improved digestion and eye health.
+                    You can buy fresh organic apricots in Neru’s shop during the season, but dried apricot is available all year round.
+
+                </p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-duration="2000">
+            <a class="btn btn-2 col-6 btn-warning rounded-pill text-white fs-5 mt-3" href="/homepages/list">
+                View More
+            </a>
+        </div>
+    </div>
+</section>
+<!--============================= Gallery Section ======================================-->
+<section class="gallery min-vh-50">
+    <div class="container-lg">
+        <h1 class="text-center pb-2">OUR GALLERY</h1>
+        <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
+            <div class="col" data-aos="fade-up" data-aos-duration="2000">
+                <img src="{% static 'images/gallery/apple_juice.jpg' %}" class="gallery-item" alt="Gallery1">
+            </div>
+            <div class="col" data-aos="fade-down" data-aos-duration="2000">
+                <img src="{% static 'images/gallery/dry_peach.jpg' %}" class="gallery-item" alt="Gallery2">
+            </div>
+            <div class="col" data-aos="fade-up" data-aos-duration="2000">
+                <img src="{% static 'images/gallery/walnut.jpg' %}" class="gallery-item" alt="Gallery3">
+            </div>
+        </div>
+        <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-duration="2000">
+            <a class="btn btn-2 col-6 btn-warning rounded-pill text-white fs-5 mt-3" href="/homepages/gallery">
+                View More
+            </a>
+        </div>
+    </div>
+</section>
+
+<!--============================= Testimonial Section ======================================-->
+<section class="testimonial-section d-flex align-items-center p-5">
+    <div class="container">
+        <h1 class="text-center">Know What Our Customer Say</h1>
+        <div class="row align-items-center">
+            <div class="col-md-6 testi-img">
+                <div class="img-box">
+                    <div class="circle"></div>
+                    <div class="img-box-inner">
+                        <img src="img/testimonial/1.png" alt="testi img">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="myCarousel" class="carousel slide" data-bs-interval="5000" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item testi-item active" data-color="#fb9c9a"
+                             data-img="{% static 'images/testimonials/1.png' %}">
+                            <p>Being part of the Neeru Pasal community has been such a great experience for us!
+                                We love being able to connect with so many amazing businesses across Mustang.
+                                And the team is very supportive in working with the members and providing
+                                resources to help our businesses grow</p>
+                            <h3>Tenzin Shrestha - <span>Phokhara</span></h3>
+                        </div>
+                        <div class="carousel-item testi-item" data-color="#fbd39a"
+                             data-img="{% static 'images/testimonials/2.png' %}">
+                            <p>We're so happy with Neeru Pasal. It did not take long before
+                                we saw the fruit in the form of social media reach and online sales. Their communication with us
+                                and their marketing strategies set them apart from other directories</p>
+                            <h3>Sonam Lama - <span>Kathmandu</span></h3>
+                        </div>
+                        <div class="carousel-item testi-item" data-color="#9ab0fb"
+                             data-img="{% static 'images/testimonials/3.png' %}">
+                            <p>
+                                Cannot say thank you enough for Neeru Pasal! As a small business owner trying to get your
+                                name out there takes a lot of time and a ton of work! Meeting all these small businesses that want
+                                to help not only themselves grow but other members as well is amazing!! Thank you again for everything.
+                            </p>
+                            <h3>Tsering Gurung - <span>Lumbhini</span></h3>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
+                            data-bs-slide="prev">
+                        <img src="{% static 'images/testimonials/left-arrow.png' %}" alt="prev">
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"
+                            data-bs-slide="next">
+                        <img src="{% static 'images/testimonials/right-arrow.png' %}" alt="prev">
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+  const myCarousel = document.getElementById('myCarousel')
+  myCarousel.addEventListener('slid.bs.carousel', function () {
+    const activeItem = this.querySelector(".active");
+    document.querySelector(".testi-img img").src = activeItem.getAttribute("data-img");
+    document.querySelector(".testi-img .circle").style.backgroundColor = activeItem.getAttribute("data-color");
+  })
+</script>
+{% endblock main_content %}
