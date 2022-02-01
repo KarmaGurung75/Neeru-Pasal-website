@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load bootstrap %}
+{% block title %}
+<title>Login User</title>
+{% endblock%}
+{% block main_content %}
+<style>
+    .login{
+        font-family: 'Poppins', sans-serif;
+        background: url(../static/images/background/mainpage/login_bg1.jpg) no-repeat center;
+    }
+    .login_row{
+        border-radius: 30px;
+        box-shadow: 12px 12px 22px;
+    }
+    .col-lg-5{
+        border: 3px solid black;
+    }
+    .control-label {
+        display:none;
+    }
+    .form-control {
+        height: 50px;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-radius: 60px;
+        justify-content: center !important;
+        align-content:center;
+        box-shadow: -1px 1px 30px -11px rgba(0,0,0,0.75);
+        -webkit-box-shadow: -1px 1px 30px -11px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 1px 30px -11px rgba(0,0,0,0.75);
+    }
+
+</style>
+<section class="login">
+<div class="login container bg-light mt-5 py-5">
+    <div class="login_row row mt-5 g-0 bg-transparent text-white">
+        <div class="col-lg-5 border-0 " data-aos="zoom-in" data-aos-duration="2000">
+            <img src="{% static 'images/background/mainpage/login.png' %}" class="img-fluid" alt="">
+        </div>
+        <div class="col-lg-7 text-center py-5">
+            <h1 class="animate__animated animate__heartBeat animate__infinite" data-aos="zoom-in"
+                data-aos-duration="2000">Welcome</h1>
+            {% include 'messages.html' %}
+
+            <form class="form text-center mt-5" action="" method="POST" data-aos="zoom-in" data-aos-duration="2000">
+                <div class="row">
+                    {% csrf_token %}
+                    {{ form_login | bootstrap_horizontal }}
+                </div>
+
+                <button type="submit" class="btn bg-transparent text-white border-light mt-3">Sign In</button>
+                <p class="lead mt-3">Don`t Have an Account? <a class="text-white border-light btn btn-white text-decoration-none"
+                                                               href="/register"> Sign Up</a></p>
+            </form>
+            <!--            </div>-->
+        </div>
+    </div>
+</div>
+</section>
+
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = "Enter UserName"
+    form_fields[2].placeholder = "Enter Password"
+
+    for(field in form_fields){
+        form_fields[field].className += ' my-3 form-control col-md-12 '
+    }
+
+    var form_fields = document.getElementsByClassName('col-sm-10')
+    form_fields[0].className += ' offset-md-1'
+    form_fields[1].className += ' offset-md-1'
+
+
+
+
+</script>
+{% endblock %}
