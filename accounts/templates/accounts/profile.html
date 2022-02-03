@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% load bootstrap %}
+{% block title %}
+<title>My Profile</title>
+{% endblock%}
+{% block main_content %}
+<style>
+    .profile{
+        font-family: 'Poppins';
+        background: url(../static/images/background/mainpage/about_bg3.jpg) no-repeat center;
+    }
+
+
+</style>
+
+<div class="profile container-fluid mt-5 pt-1 text-white min-vh-75">
+    <div class="row mt-5 pt-3 border border-light border-0">
+        <h1 class="text-center text-dark text-decoration-underline" data-aos="zoom-in" data-aos-duration="2000">My Profile</h1>
+        {% include 'messages.html' %}
+        <div class="col mt-5">
+            <div class="card bg-transparent border-0 text-white">
+                <div class="card-body text-center" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="/{{request.user.profile.profile_picture}}" width="50%" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col mt-5">
+{#            <h1 class="text-center mb-5" data-aos="zoom-in" data-aos-duration="2000">My Profile Details</h1>#}
+            <div class="card bg-transparent border-0 text-dark ">
+                <div class="card-body fs-1">
+                    <div class="py-3" data-aos="fade-left" data-aos-duration="2000">Firstname :
+                        {{request.user.profile.firstname}}
+                    </div>
+                    <div class="py-3" data-aos="fade-right" data-aos-duration="2000">Lastname :
+                        {{request.user.profile.lastname}}
+                    </div>
+                    <div class="py-3" data-aos-duration="2000">Email :
+                        {{request.user.profile.email}}
+                    </div>
+                    <div class="py-3"  data-aos-duration="2000">Phone :
+                        {{request.user.profile.phone}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Enter first name';
+    form_fields[2].placeholder = 'Enter last name';
+    form_fields[3].placeholder = 'Enter phone number';
+    for (var field in form_fields){
+    field.className += ' my-2'
+    }
+
+
+
+</script>
+{% endblock %}

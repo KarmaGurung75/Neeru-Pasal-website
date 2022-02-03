@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% load bootstrap %}
+{% block title %}
+    <title>Register User</title>
+{% endblock%}
+{% block main_content %}
+<style>
+    .register{
+        font-family: 'Poppins', sans-serif;
+        background: url(../static/images/background/mainpage/login_bg1.jpg) no-repeat center;
+    }
+    span.help-block{color:red;}
+    p.help-block{font-size:12px;}
+
+    .myForm label.control-label, .myForm div{
+         width:100%;
+    }
+    .myForm ul li{font-size:12px;}
+</style>
+
+<div class="register container-fluid mt-5 bg-transparent text-white" style="min-height:65vh;">
+<div class="row mt-5">
+    <div class="col-md-6 offset-md-3 mt-5 p-2 border border-light border-2">
+        <h1 class="text-center mb-3" data-aos="zoom-in" data-aos-duration="2000">Register New User</h1>
+        {% include 'messages.html' %}
+        <div class="card py-2 px-2 bg-transparent border-dark border-0">
+        <form class="form myForm" data-aos="fade-up" data-aos-duration="2000" action="" method="POST">
+            {% csrf_token %}
+            {{ form_register | bootstrap_horizontal}}
+            <button type="submit" class="text-dark border-light btn btn-light mt-3" data-aos="zoom-in" data-aos-duration="2000" href="/homepage">Sign Up</button>
+            <p class="lead mt-3" data-aos="zoom-in" data-aos-duration="2000">Already Have an Account? <a class="text-white btn btn-primary border-light text-decoration-none" href="/login"> Sign In</a></p>
+        </form>
+    </div>
+    </div>
+</div>
+</div>
+
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = "Enter UserName"
+    form_fields[2].placeholder = "Enter Email"
+    form_fields[3].placeholder = "Enter Password"
+    form_fields[4].placeholder = "Confirm Password"
+
+    for(field in form_fields){
+        form_fields[field].className += ' my-3'
+    }
+
+</script>
+{% endblock %}
