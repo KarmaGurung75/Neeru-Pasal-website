@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load bootstrap %}
+{% block title %}
+<title>Product</title>
+{% endblock%}
+
+{% block main_content %}
+<style>
+    .list{
+        background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../static/images/background/mainpage/order.jpg) no-repeat center;
+        font-family: 'Poppins', sans-serif;"
+    }
+    .logo{
+        overflow:hidden;
+        transition: all 1.3s ease;
+    }
+    .logo:hover{
+        transform: scale(1.2);
+    }
+
+</style>
+
+<div class="list container-fluid p-5" style="min-height:100vh;">
+    <h1 class="text-center pb-3 display-1 text-white pt-5">Product Categories</h1>
+    {% for i in product_category %}
+
+    <div class="row justify-content-center p-5" data-aos="fade-up" data-aos-duration="2000">
+        <a href="/homepages/show_list/{{i.id}}" class="logo text-decoration-none text-center text-white fs-3"><img
+                src="/{{i.category_image}}" class="img-fluid border rounded-circle w-25"
+                alt="logo"><br>{{ i.category_name }}</a>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}
