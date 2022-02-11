@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
+<title>My Cart</title>
+{% endblock%}
+
+{% block main_content %}
+<style>
+    .my-cart{
+        background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../static/images/background/mainpage/order.jpg) no-repeat center;
+        font-family: 'Poppins',sans-serif;"
+    }
+
+
+
+
+
+</style>
+<div class="my-cart container-fluid bg-transparent mt-5" style="min-height:100vh;">
+    <div class="row mt-5">
+        <div class="col-md-10 offset-md-1 mt-5">
+            <h1 class="text-center text-white display-2 mb-3" data-aos="fade-up" data-aos-duration="2000">My Cart</h1>
+            {% include 'messages.html' %}
+            <div class="card py-2 px-2 text-center bg-transparent">
+                <table class="table-striped text-white bg-transparent" data-aos="fade-up" data-aos-duration="2000">
+                    <tr class="p-2 m-2 fs-2">
+                        <th>Product Image</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for i in items %}
+                    <tr class="border border-2">
+                        <td><img src="/{{i.product.product_image}}" alt="file_image" width="100" class="border border-1 m-2">
+                        </td>
+                        <td> {{ i.product.product_name }}</td>
+                        <td> Rs. {{ i.product.product_price }}</td>
+                        <td> {{ i.created_date }}</td>
+                        <td><a href="/homepages/order_form/{{i.product.id}}/{{i.id}}" class="btn btn-primary btn-sm"
+                               onclick="return confirm('Are you sure want to order this product?')"><i
+                                class="far fa-shopping-bag"></i> Order</a> &nbsp;
+                            <a href="/homepages/remove_cart_item/{{i.id}}" class="btn btn-danger btn-sm"
+                               onclick="return confirm('Are you sure want to remove this product?')"><i
+                                    class="far fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <a href="/homepages/list" class="col-md-2 btn btn-outline-light btn-lg p-3 m-3"
+           onclick="return confirm('Are you sure want to go back to ordering product?')"><i
+                class="far fa-shopping-bag"></i> Continue Ordering</a>
+    </div>
+</div>
+
+{% endblock %}

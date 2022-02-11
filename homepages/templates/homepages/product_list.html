@@ -1,0 +1,153 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block title %}
+    <title>Product List</title>
+{% endblock%}
+
+{% block main_content %}
+    <style>
+        .list{
+            font-family: 'Poppins', sans-serif;
+            {#background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),  url(../static/images/background/mainpage/order.jpg) no-repeat center;#}
+
+
+        }
+        .card {
+            width: 18rem;
+            border: none;
+            height: 350px;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden
+        }
+        .p-info {
+            display: flex;
+            justify-content: space-between
+        }
+        .p-price {
+            position: absolute;
+            left: 15px;
+            bottom: 20px
+        }
+        .heart i {
+            font-size: 35px;
+            opacity: 0;
+            color: white;
+        }
+        .heart i:hover {
+            color: red
+        }
+        .p-image img {
+            width: 75%;
+            border-radius: 25%;
+            transform: rotate(15deg);
+            transition: all 0.5s
+        }
+        .card:hover .heart i {
+            animation: heart 300ms ease-in forwards;
+            animation-delay: 500ms
+        }
+        .card:hover{
+            animation: content 300ms ease-in forwards
+        }
+        @keyframes heart {
+            0% {
+                opacity: 0
+            }
+            100% {
+                opacity: 1
+            }
+        }
+        .card:hover .p-image img {
+            animation: onimage 1000ms ease-in forwards
+        }
+        .card:hover .p-price {
+            animation: onprice 1000ms ease-in forwards
+        }
+        @keyframes onprice {
+            0% {
+                left: 10px;
+                top: 80px
+            }
+            50% {
+                left: 50px;
+                top: 150px
+            }
+            100% {
+                left: 80px;
+                top: 230px;
+            }
+        }
+        @keyframes onimage {
+            0% {
+                width: 250px
+            }
+            50% {
+                width: 200px;
+                transform: translateY(-30px);
+                transform: translateX(100px)
+            }
+            100% {
+                width: 75%;
+                top: 100px;
+                transform: translateY(0);
+                transform: translateX(0)
+            }
+        }
+        .buttons {
+            position: absolute;
+            bottom: -150px
+        }
+        .card:hover .buttons {
+            animation: buttons 500ms ease-in forwards
+        }
+        @keyframes buttons {
+            0% {
+                bottom: -100px
+            }
+            100% {
+                left: 55px;
+                bottom: 20px
+            }
+        }
+        .a {
+            height: 50px;
+            font-size: 16px;
+            width: 140px !important;
+            font-weight: 600
+        }
+    </style>
+    <section class="list" style="background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),  url(../static/images/background/mainpage/order.jpg) no-repeat center;">
+        <div class="container-fluid p-5 bg-transparent">
+            <div class="row justify-content-center p-5" data-aos="fade-up" data-aos-duration="2000">
+                <h1 class="heading text-center display-2 text-white pb-2" data-aos="fade-up" data-aos-duration="2000">Our Product </h1>
+                {% include 'messages.html' %}
+                {% for i in product_list.productlist_set.all %}
+                    <div class="card p-2 m-4 bg-transparent text-white border border-3">
+                        <div class="p-info px-3 py-3">
+                            <div>
+                                <h5 class="mb-0 fs-3" data-aos="fade-left" data-aos-duration="2000">{{i.product_name}}</h5>
+                            </div>
+                            <div class="p-price d-flex flex-row" data-aos="fade-right" data-aos-duration="2000"><span>Rs.</span>
+                                <h1 class="fs-3">{{i.product_price}}</h1>
+                            </div>
+                            <div class="heart"><a href="/homepages/add_wishlist/{{i.id}}"><i class="far fa-heart"></i></a></div>
+                        </div>
+                        <div class="text-center p-image p-2" data-aos="fade-down" data-aos-duration="2000"><img
+                                src="/{{i.product_image}}" class="border border-4"></div>
+                        <div class="buttons px-3" data-aos="fade-up" data-aos-duration="2000">
+                            <a href="/homepages/add_to_cart/{{i.id}}" class="btn btn-outline-light w-100"
+                               onclick="return confirm('Are You Sure You Want To Add This Item To Cart?')"><span
+                                    class="fal fa-cart-plus"
+                                    aria-hidden="true"> Add To Cart</span></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
