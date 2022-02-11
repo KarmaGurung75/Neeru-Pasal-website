@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+<title>About Us</title>
+{% endblock%}
+
+{% block main_content %}
+<style>
+    .about{
+        background: linear-gradient(rgba(0, 0, 0, 0.616),rgba(0, 0, 0, 0.616)), url(../static/images/background/mainpage/about_bg1.png) no-repeat fixed;
+        font-family: 'Poppins', sans-serif;"
+    }
+    .neeru_map iframe{
+        width: 100%;
+        height: 21.5em;
+        border:1px solid #dadada;
+        padding:7px;
+}
+
+
+</style>
+
+<section class="about container-fluid p-5 border border-white border-3">
+    <h1 class="text-center pb-3 display-1 text-white pt-5" data-aos="fade-up" data-aos-duration="2000">About Us</h1>
+    <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="2000">
+        <img src="{% static 'images/background/logo/log2.png' %}" class="img-fluid w-50" alt="...">
+    </div>
+    <div class="section-content ps-3 pe-3 text-center text-white" data-aos="fade-up" data-aos-duration="2000">
+        <h3 class="text-center pt-3 pb-3 text-decoration-underline display-5">Welcome To Neeru Pasal</h3>
+        <p class="lh-lg ps-5 pe-5 lead">
+            Neru pasal is a locally owned natural food grocery store in Jomsom, Mustang, operating since 2005.
+            We’re committed to bringing our customers healthy, delicious, and innovative food without compromising on
+            the values that matter most to us; Quality, convenience, and sustainability. We buy direct from suppliers in volume
+            and contract them early to get the best prices. Whenever possible, we bargain hard to get the best price and then pass
+            the savings on to you. Simply put, every time a customer shops with us, we want them to be able to say,
+            “Wow! That was enjoyable, and I got a great deal. I look forward to coming back!”
+            Also, we provide pick-up orders by contacting us
+        </p>
+    </div>
+    <div class="d-flex justify-content-center p-5" data-aos="fade-up" data-aos-duration="2000">
+        <a class="btn btn-2 col-2 btn-warning rounded-pill text-white fs-5 mt-3 me-3 ms-3" href="/homepage/list">
+            Visit Menu
+        </a>
+        <a class="btn btn-2 col-2 btn-warning rounded-pill text-white fs-5 mt-3 me-3 ms-3" href="/homepage/contact">
+            Contact Us
+        </a>
+    </div>
+    <div class="container-fluid ps-5 pe-5" data-aos="fade-up" data-aos-duration="2000">
+        <div class="neeru_map ps-5 pe-5">
+            <h3 class="text-center pb-3 text-decoration-underline display-5 text-white">Our Location</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d849.3343148906115!2d83.72339933730586!3d28.78263763128587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39be0e5efa4779fb%3A0x42fc31883a11e2f5!2sJomsom%20Airport!5e0!3m2!1sen!2snp!4v1644206716237!5m2!1sen!2snp">
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
