@@ -1,0 +1,39 @@
+{% extends 'layout-admin.html' %}
+{% block title %}
+<title>Feed Back</title>
+{% endblock%}
+{% block main_content %}
+<div class="container mt-5 pt-5" style="font-family: Poppins,sans-serif; min-height: 100vh;">
+    <div class="row mt-5">
+        <div class="col-md-10 offset-md-1">
+            {% include 'messages.html' %}
+            <h1 class="text-center">All Feedbacks</h1>
+            <div class="card py-2 px-2">
+                <table class="table-striped text-dark bg-transparent">
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for i in feedback %}
+
+                    <tr>
+                        <td> {{ i.firstname }}</td>
+                        <td> {{ i.lastname }}</td>
+                        <td> {{ i.email }}</td>
+                        <td> {{ i.message }}</td>
+                        <td>
+                            <a class="btn btn-danger"
+                               href="/homepage/delete_feedback/{{i.id}}"
+                               onclick="return confirm('Are you sure?')">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'layout-admin.html' %}
+{% load static %}
+{% load bootstrap %}
+{% block title %}
+<title>All Product List</title>
+{% endblock%}
+
+{% block main_content %}
+<style>
+    .myForm label.control-label, .myForm div{
+         width:100%;
+    }
+
+</style>
+<div class="container mt-5" style="min-height:100vh; font-family: Poppins,sans-serif;">
+    <div class="row mt-5">
+<!--        <div class="card card-body">-->
+            <form class="form myForm" method="get">
+                {{ filter.form | bootstrap_horizontal }}
+                <button type="submit" class="btn btn-primary btn-sm mt-3">Search</button>
+            </form>
+<!--        </div>-->
+        <div class="col-md-10 offset-md-1 mt-5" data-aos="fade-up" data-aos-duration="2000">
+            <h1 class="text-center">All Product List</h1>
+            {% include 'messages.html' %}
+            <div class="card py-2 px-2">
+                <a class="btn text-dark bg-transparent btn-dark btn-sm ms-auto mb-2" href="/homepages/product_list_form">Add New Product
+                    List</a>
+                <table class="table bg-transparent table-hover">
+                    <tr>
+                        <th>Product List Image</th>
+                        <th>Product List Name</th>
+                        <th>Product Price</th>
+                        <th>Product Category</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for i in get_product_list %}
+                    <tr>
+                        <td><img src="/{{i.product_image}}" alt="file_image" width="100"></td>
+                        <td> {{ i.product_name }}</td>
+                        <td> {{ i.product_price }}</td>
+                        <td> {{ i.category.category_name }}</td>
+                        <td> {{ i.created_date }}</td>
+                        <td><a href="/homepages/update_product_list/{{i.id}}"
+                               class="btn btn-primary btn-sm">Edit</a> &nbsp;
+                            <a href="/homepages/delete_product_list/{{i.id}}" class="btn btn-danger btn-sm"
+                               onclick="return confirm('Are you sure want to delete this product category?')">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

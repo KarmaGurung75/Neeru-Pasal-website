@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+{% block title %}
+<title>My Orders</title>
+{% endblock title %}
+{% block main_content %}
+<style>
+    .my-order{
+        background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../static/images/background/mainpage/order.jpg) no-repeat center;
+        font-family: 'Poppins', fantasy;"
+    }
+</style>
+
+<div class="my-order container-fluid p-5">
+    <div class="row">
+        <div class="col mt-4 mb-4">
+            <h1 class="text-center text-white text-uppercase m-4 font-weight-bold" data-aos="fade-up"
+                data-aos-duration="2000">My Order History</h1>
+            {% include 'messages.html' %}
+            <div class="card bg-dark">
+                <div class="card-body">
+                    <table class="table bg-dark text-white">
+                        <thead class="bg-light text-dark border border-dark border-1" data-aos="fade-up"
+                               data-aos-duration="2000">
+                        <tr data-aos="fade-left" data-aos-duration="2000">
+                            <th>Item Name</th>
+                            <th>Item Price</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Ordered Date</th>
+                            <th>Contact No</th>
+                            <th>Delivery Location</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody class="align-items-center">
+                        {% for item in items %}
+                        <tr data-aos="fade-right" data-aos-duration="2000">
+                            <td>{{item.product.product_name}}</td>
+                            <td>Rs. {{item.product.product_price}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.total_price}}</td>
+                            <td>{{item.created_date}}</td>
+                            <td>{{item.contact_no}}</td>
+                            <td>{{item.contact_address}}</td>
+                            <td>{{item.status}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center" data-aos="fade-down" data-aos-duration="2000">
+        <a href="/homepages/list" class="col-md-2 btn btn-outline-light btn-lg p-3 m-3"
+           onclick="return confirm('Are you sure want to go back to ordering product?')"><i
+                class="far fa-shopping-bag"></i> Continue Ordering</a>
+    </div>
+</div>
+
+{% endblock %}

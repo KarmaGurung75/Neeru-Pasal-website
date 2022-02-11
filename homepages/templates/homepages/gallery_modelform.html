@@ -1,0 +1,36 @@
+{% extends 'layout-admin.html' %}
+{% block title %}
+<title>All Gallery</title>
+{% endblock%}
+
+{% block main_content %}
+<div class="container mt-5" style="min-height:100vh; font-family: Poppins,sans-serif">
+    <div class="row mt-5">
+
+        <div class="col-md-10 offset-md-1 mt-5" data-aos="fade-up" data-aos-duration="2000">
+            <h1 class="text-center">Gallery</h1>
+            <div class="card py-2 px-2">
+                <a class="text-white btn btn-primary btn-sm ms-auto mb-2" href="/homepages/add_gallery_modelform">Add New Photo</a>
+                <table class="table bg-transparent table-hover">
+                    <tr>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for file in files %}
+                    <tr>
+                        <td> {{ file.title }}</td>
+                        <td> <img src="/{{file.file}}" alt="file_image" width="100"></td>
+                        <td><a href="/homepages/update_gallery_modelform/{{file.id}}" class="btn btn-primary btn-sm">Edit</a> &nbsp;
+                            <a href="/homepages/delete_gallery_modelform/{{file.id}}" class="btn btn-danger btn-sm"
+                               onclick="return confirm('Are you sure want to delete this photo?')">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

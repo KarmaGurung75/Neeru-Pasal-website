@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load bootstrap %}
+{% block title %}
+<title>eSewa Payment</title>
+{% endblock%}
+
+{% block main_content %}
+
+<style>
+    .esewa{
+        font-family: 'Poppins';"
+    }
+</style>
+
+<div class="container-fluid p-5" style="min-height:90vh;">
+    <div class="row p-5">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="esewa text-center">You are being redirected to Esewa. Please wait.....</h1>
+            {% include 'messages.html'%}
+            <div class="card py-2 px-2 m-2" style="display:none;">
+                <form action="https://uat.esewa.com.np/epay/main" method="POST" id="esewa_form">
+                    <label class="m-2">Total Price</label><br/>
+                    <input class="m-2" value="{{order.total_price}}" name="tAmt" type="text" readonly><br/>
+                    <input value="{{order.total_price}}" name="amt" type="hidden" readonly>
+                    <input value="0" name="txAmt" type="hidden" >
+                    <input value="0" name="psc" type="hidden" >
+                    <label class="m-2">Delivery Charge</label><br/>
+                    <input class="m-2" value="0" name="pdc" type="text" readonly><br/>
+                    <input value="EPAYTEST" name="scd" type="hidden">
+                    <input value="{{order.id}}_{{cart.id}}" name="pid" type="hidden">
+
+
+
+                    <input value="http://127.0.0.1:8000/homepage/esewa_verify" type="hidden" name="su">
+                    <input value="{{request.build_absolute_uri}}" type="hidden" name="fu">
+                    <input class="m-2" value="Submit" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    setTimeout(function(){
+    document.getElementById('esewa_form').submit()
+    }, 2000)
+
+</script>
+{% endblock %}

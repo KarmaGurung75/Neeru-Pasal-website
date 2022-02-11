@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block title %}
+<title>Gallery</title>
+{% endblock%}
+
+{% block main_content %}
+<style>
+    .gallery{
+        background: url(../static/images/background/mainpage/gallery_bg.jpg);
+        padding: 80px 0px;
+        min-height:100vh;
+    }
+    img{
+        max-width: 100%;
+    }
+    .gallery img{
+        background: #fff;
+        padding: 15px;
+        width: 100%;
+        box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+        cursor: pointer;
+    }
+    .gallery h1{
+        font-family: 'Poppins', fantasy;
+        color: white;
+    }
+
+</style>
+
+<section class="gallery min-vh-50 mt-3">
+    <div class="container-lg mt-3">
+        <h1 class="text-center text-capitalize font-weight-bold pb-3">OUR GALLERY</h1>
+        <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
+            {% for i in gallery %}
+            <div class="col" data-aos="fade-up" data-aos-duration="2000">
+                <img src="/{{i.file}}" class="gallery-item" alt="Gallery">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
