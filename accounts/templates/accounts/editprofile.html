@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% load bootstrap %}
+{% block title %}
+<title>Edit Profile</title>
+{% endblock%}
+{% block main_content %}
+<style>
+    .profile{
+        font-family: 'Poppins', sans-serif;
+        background: url(../static/images/background/mainpage/about_bg3.jpg) no-repeat center;
+    }
+    .myForm label.control-label, .myForm div{
+         width:100%;
+    }
+    .control-label {
+        font-size:18px;
+        margin: 5px;
+    }
+    .form-control {
+        height: 50px;
+        width: 100%;
+        border-radius: 60px;
+        margin:10px;
+    }
+
+</style>
+
+<div class="profile container-fluid mt-5 bg-transparent text-dark ">
+    <div class="row mt-5">
+        <div class="col mt-5 p-5">
+            <div class="col-md-12 p-5 border border-dark border-0">
+                {% include 'messages.html' %}
+                <h1 class="text-center" data-aos="zoom-in" data-aos-duration="2000">Update Profile</h1>
+                <div class="card py-2 px-2 p-5 bg-transparent border border-dark border-5" data-aos="fade-up" data-aos-duration="2000">
+                    <form class="form myForm p-5 " action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form | bootstrap_horizontal}}
+                        <button type="submit" class="btn btn-outline-light border-dark text-dark mt-3" data-aos="zoom-in" data-aos-duration="2000">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Enter first name';
+    form_fields[2].placeholder = 'Enter last name';
+    form_fields[3].placeholder = 'Enter phone number';
+    for (var field in form_fields){
+    field.className += ' my-2'
+    }
+</script>
+
+{% endblock %}
