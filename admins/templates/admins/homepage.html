@@ -1,0 +1,95 @@
+{% extends 'layout-admin.html' %}
+{% load static %}
+{% block title %}
+    <title>Admin-Dashboard</title>
+{% endblock %}
+{% block main_content %}
+    <style>
+        .card-body a{
+            text-decoration:none;
+            color:#fff;
+        }
+        .card-body a:hover{
+            color:orange;
+        }
+
+    </style>
+    <section class="admin_dashboard bg-white" style="min-height:100vh; font-family: Poppins">
+        <div class="container bg-white">
+            <h1 class="text-center p-4 bg-white text-dark" data-aos="zoom-in" data-aos-duration="2000">Admin Dashboard</h1>
+            {% include 'messages.html' %}
+
+            <div class="row p-4 bg-white">
+                <div class="col-lg-6 col-md-6 col-xl-4 mb-4 bg-white" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 35rem;">
+                        <div class="card-header text-uppercase fw-bold text-xs mb-1 text-center" data-aos="zoom-in" data-aos-duration="2000">Category</div>
+                        <div class="card-body" data-aos="fade-up" data-aos-duration="2000">
+                            <a href="/homepages/get_product_category">
+                                <h1 class="card-title text-center bg-white text-dark">{{category}}</h1></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xl-4 mb-4 bg-white" data-aos="fade-right" data-aos-duration="2000">
+                    <div class="card text-white bg-info mb-3" style="max-width: 35rem;">
+                        <div class="card-header text-center text-uppercase fw-bold text-xs mb-1" data-aos="zoom-in" data-aos-duration="2000">Total Menu</div>
+                        <div class="card-body" data-aos="fade-up" data-aos-duration="2000">
+                            <a href="/homepages/get_product_list">
+                                <h1 class="card-title text-center bg-white text-dark">{{list}}</h1>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-xl-4 mb-4 bg-white" data-aos="fade-down" data-aos-duration="2000">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 35rem;">
+                        <div class="card-header text-center text-uppercase fw-bold text-xs mb-1" data-aos="zoom-in" data-aos-duration="2000">Gallery Items</div>
+                        <div class="card-body" data-aos="fade-up" data-aos-duration="2000">
+                            <a href="/homepages/gallery_modelform">
+                                <h1 class="card-title text-center bg-white text-dark">{{gallery}}</h1></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-xl-4 mb-4 bg-white" data-aos="fade-left" data-aos-duration="2000">
+                    <div class="card text-white bg-warning mb-3" style="max-width: 35rem;">
+                        <div class="card-header text-center text-uppercase fw-bold text-xs mb-1" data-aos="zoom-in" data-aos-duration="2000">Total Feedback</div>
+                        <div class="card-body" data-aos="fade-up" data-aos-duration="2000">
+                            <a href="/homepages/get_feedback">
+                                <h1 class="card-title bg-white text-center text-dark">{{sendFeedback}}</h1>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-xl-4 mb-4 bg-white" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="card text-white bg-success mb-3" style="max-width: 35rem;">
+                        <div class="card-header text-center text-uppercase fw-bold text-xs mb-1" data-aos="zoom-in" data-aos-duration="2000">Total Users</div>
+                        <div class="card-body" data-aos="fade-up" data-aos-duration="2000">
+                            <a href="/admins/users"><h1 class="card-title text-center bg-white text-dark">{{user}}</h1></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-xl-4 mb-4 bg-white" data-aos="fade-down" data-aos-duration="2000">
+                    <div class="card text-white bg-danger mb-3" style="max-width: 35rem;">
+                        <div class="card-header text-center text-uppercase fw-bold text-xs mb-1" data-aos="zoom-in" data-aos-duration="2000">Total Admins</div>
+                        <div class="card-body" data-aos="fade-up" data-aos-duration="2000">
+                            <a href="/admins"><h1 class="card-title text-center bg-white text-dark">{{admin}}</h1>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-xl-4 mb-4 bg-white" data-aos="zoom-in" data-aos-duration="2000">
+                    <div class="card text-white bg-danger mb-3" style="max-width: 35rem;">
+                        <div class="card-header text-center text-uppercase fw-bold text-xs mb-1" data-aos="zoom-in" data-aos-duration="2000">Orders</div>
+                        <div class="card-body" data-aos="fade-up" data-aos-duration="2000">
+                            <a href="/homepages/get_order"><h1 class="card-title text-center bg-white text-dark">{{order}}</h1>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
