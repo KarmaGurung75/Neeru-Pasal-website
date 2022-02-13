@@ -1,0 +1,36 @@
+{% extends 'layout-admin.html' %}
+{% block title %}
+<title>All Admins</title>
+{% endblock%}
+{% block main_content %}
+<div class="container mt-5" style="font-family: Poppins,serif; min-height:100vh;">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <h1 class="text-center">All Admins</h1>
+            {% include 'messages.html' %}
+            <div class="card py-2 px-2">
+{#                <a class="btn btn-primary btm-sm ms-auto"#}
+{#                href="#">Add New Admin</a>#}
+                <table class="table-striped">
+                    <tr>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for i in admins %}
+                    <tr>
+                        <td> {{ i.email }}</td>
+                        <td> {{ i.username }}</td>
+                        <td><a class="btn btn-danger"
+                               href="/admins/demote/{{i.id}}"
+                               onclick="return confirm('Are You Sure You Want To Demote This Admin?')">Demote To User</a> &nbsp;
+
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
