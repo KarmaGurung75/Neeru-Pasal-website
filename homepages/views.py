@@ -222,7 +222,7 @@ def delete_gallery_modelform(request, file_id):
     image = FileUpload.objects.get(id=file_id)
     os.remove(image.file.path)
     image.delete()
-    return redirect('/homepage/gallery_modelform')
+    return redirect('/homepages/gallery_modelform')
 
 
 # Function that helps to edit the photos from gallery.
