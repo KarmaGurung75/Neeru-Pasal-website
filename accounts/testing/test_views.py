@@ -17,14 +17,3 @@ class Test_views(TestCase):
         client=Client()
         response=client.get(reverse('register_user'))
         self.assertTemplateUsed(response,'accounts/register.html')
-
-    def test_profile(self):
-        client=Client()
-        response=client.get(reverse('profile'))
-        self.assertTemplateUsed(response,'accounts/profile.html')
-
-    def test_edit_profile(self):
-        client=Client()
-        response=client.get(reverse('edit_profile'))
-        self.assertTemplateUsed(response,'accounts/editprofile.html')
-
