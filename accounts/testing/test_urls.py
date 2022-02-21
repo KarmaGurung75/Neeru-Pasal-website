@@ -10,17 +10,17 @@ class TestUrls(SimpleTestCase):
         self.assertEquals(view,homepage)
 
     def test_login_user_urls_is_resolved(self):
-        url=reverse('login')
+        url=reverse('login_user')
         view=resolve(url).func
         self.assertEquals(view,login_user)
 
     def test_register_user_urls_is_resolved(self):
-        url=reverse('logout')
+        url=reverse('logout_user')
         view=resolve(url).func
         self.assertEquals(view,logout_user)
 
     def test_profile_urls_is_resolved(self):
-        url=reverse('my_profile')
+        url=reverse('profile')
         view=resolve(url).func
         self.assertEquals(view,profile)
 
@@ -39,10 +39,6 @@ class TestUrls(SimpleTestCase):
         view=resolve(url).func
         self.assertEquals(view,change_password)
 
-    # def test_password_change_admin_urls_is_resolved(self):
-    #     url=reverse('password_change_admin')
-    #     view=resolve(url).func
-    #     self.assertEquals(view,change_password)
 
 
 

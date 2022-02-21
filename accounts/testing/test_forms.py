@@ -12,6 +12,6 @@ class TestForms(SimpleTestCase):
            'lastname':'Gurung',
            'phone':'982756536',
            'profile_piture':'image.jpg'
-            
+
         })
         self.assertTrue(form.is_valid())
